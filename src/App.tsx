@@ -4,6 +4,8 @@ import { Menu } from './components/Menu';
 import { CountDown } from './components/CountDown';
 import { DefaultInput } from './components/DefaultInput';
 import { Cycles } from './components/Cycles';
+import { DefaultButton } from './components/DefaultButton';
+import { PlayCircleIcon, StopCircleIcon } from 'lucide-react';
 
 import './styles/theme.css';
 import './styles/global.css';
@@ -37,7 +39,8 @@ export function App() {
             <Cycles />
           </div>
           <div className="formRow">
-            <button>Enviar</button>
+            <DefaultButton icon={<PlayCircleIcon />} />
+            <DefaultButton icon={<StopCircleIcon />} color="red" />
           </div>
         </form>
       </Container>
