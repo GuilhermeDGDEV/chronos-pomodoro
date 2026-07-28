@@ -33,7 +33,7 @@ export function MainForm() {
       id: crypto.randomUUID(),
       name: taskName,
       startDate: Date.now(),
-      completedate: null,
+      completeDate: null,
       interruptDate: null,
       duration: state.config[nextCycleType],
       type: nextCycleType,
@@ -54,16 +54,19 @@ export function MainForm() {
     });
   }
 
-  function handleInterruptTask(
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) {
-    e.preventDefault();
+  function handleInterruptTask() {
     setState(prevState => {
       return {
         ...prevState,
         activeTask: null,
         secondsRemaining: 0,
         formattedSecondsRemaining: '00:00',
+        tasks: prevState.tasks.map(task => {
+          if (prevState.activeTask && prevState.activeTask.id === task.id) {
+            return { ...task, interruptDate: Date.now() };
+          }
+          return task;
+        }),
       };
     });
   }
