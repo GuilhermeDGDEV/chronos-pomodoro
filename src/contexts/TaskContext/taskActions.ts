@@ -13,7 +13,6 @@ export type TaskActionsWithPayload =
     }
   | {
       type: TaskActionTypes.INTERRUPT_TASK;
-      payload: TaskModel;
     };
 
 export type TaskActionsWithoutPayload = {
