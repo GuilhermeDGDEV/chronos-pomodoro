@@ -44,3 +44,8 @@
 .thSort:hover {
   filter: brightness(80%);
 }
+
+.avisoTabelaVazia {
+  text-align: center;
+  font-weight: bold;
+}
