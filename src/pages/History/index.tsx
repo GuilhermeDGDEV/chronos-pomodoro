@@ -8,6 +8,7 @@ import { formatDate } from '../../utils/formatDate';
 import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
 import { useMemo, useState } from 'react';
+import { showMessage } from '../../adapters/showMessage';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 import styles from './styles.module.css';
@@ -55,9 +56,10 @@ export function History() {
   }
 
   function handleResetHistory() {
-    if (!confirm('Tem certeza que deseja excluir histórico?')) return;
-
-    dispatch({ type: TaskActionTypes.RESET_STATE });
+    showMessage.dismiss();
+    showMessage.confirm('Tem certeza?', confirmation => {
+      if (confirmation) dispatch({ type: TaskActionTypes.RESET_STATE });
+    });
   }
 
   return (
